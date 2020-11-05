@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nitu_Andreea_Natalia_Lab2"
         mc:Ignorable="d"
-        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Loaded="frmMain_Loaded">
     <Window.Background>
         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
     </Window.Background>
-    <Grid>
+    <Grid MenuItem.Click="FilledItemsShow_Click">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="361*"/>
             <ColumnDefinition Width="439*"/>
@@ -36,33 +36,33 @@
         <GroupBox x:Name="gbSale" Header="Current Sale" Margin="87,232,56,0" Grid.ColumnSpan="2" FontWeight="Bold">
             <Canvas>
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="10" Canvas.Top="10" Width="62" FontWeight="Normal"/>
-                <TextBox x:Name="txtQuantity" Canvas.Left="77" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="59" Height="26"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="77" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="59" Height="26" KeyUp="txtQuantity_KeyPress"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="155" Canvas.Top="10" Width="41" FontWeight="Normal"/>
-                <ComboBox x:Name="cmbType" Canvas.Left="201" Canvas.Top="12" Width="121"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="201" Canvas.Top="12" Width="121" SelectionChanged="cmbType_SelectionChanged"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="342" Canvas.Top="10" FontWeight="Normal"/>
                 <TextBox x:Name="txtPrice" Canvas.Left="385" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="56" Height="26" IsReadOnly="True"/>
                 <ListBox x:Name="lstSale" Height="73" Width="446" Canvas.Left="10" Canvas.Top="41"/>
                 <Label x:Name="lblTotal" Content="Total" Canvas.Left="270" Canvas.Top="125" Width="52"/>
                 <TextBox x:Name="txtTotal" Canvas.Left="321" Canvas.Top="129" Text="0" TextWrapping="Wrap" Width="120" Height="25" IsReadOnly="True"/>
-                <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="493" Canvas.Top="58" RenderTransformOrigin="0.554,0.584" Height="24" Width="75" FontWeight="Normal"/>
-                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="493" Canvas.Top="87" Height="27" Width="75" FontWeight="Normal"/>
-                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="493" Canvas.Top="129" Height="25" Width="75" FontWeight="Bold"/>
+                <Button x:Name="btnAdd" Content="Add To Sale" Canvas.Left="493" Canvas.Top="58" RenderTransformOrigin="0.554,0.584" Height="24" Width="75" FontWeight="Normal" Click="btnAdd_Click"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="493" Canvas.Top="87" Height="27" Width="75" FontWeight="Normal" Click="btnRemoveItem_Click"/>
+                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="493" Canvas.Top="129" Height="25" Width="75" FontWeight="Bold" Click="btnCheckOut_Click"/>
             </Canvas>
         </GroupBox>
         <Menu Margin="10,10,232,385">
-            <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+            <MenuItem x:Name="fileMenuItem" Header="File">
+                <MenuItem x:Name="exitMenuItem" Header="Exit" Click="exitMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem Header="Glazed"/>
-                        <MenuItem Header="Sugar"/>
+                        <MenuItem x:Name="glazedMenuItem" Header="Glazed" Click="glazedMenuItem_Click"/>
+                        <MenuItem x:Name="sugarMenuItem" Header="Sugar" Click="sugarMenuItem_Click"/>
                     </MenuItem>
                     <MenuItem Header="Filled">
-                        <MenuItem Header="Lemon"/>
-                        <MenuItem Header="Chocolate"/>
-                        <MenuItem Header="Vanilla"/>
+                        <MenuItem x:Name="lemonMenuItem" Header="Lemon" Click="lemonMenuItem_Click"/>
+                        <MenuItem x:Name="chocolateMenuItem" Header="Chocolate" Click="chocolateMenuItem_Click"/>
+                        <MenuItem x:Name="vanillaMenuItem" Header="Vanilla" Click="vanillaMenuItem_Click"/>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Stop"/>
